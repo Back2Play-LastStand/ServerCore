@@ -16,5 +16,7 @@ struct PacketInfo
 
 class Packet
 {
+	Packet() = default;
+	virtual ~Packet();
 };
 

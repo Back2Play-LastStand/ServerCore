@@ -19,5 +19,8 @@ class Packet
 public:
 	Packet() = default;
 	virtual ~Packet();
+
+private:
+	vector<char> m_buffer;
 };
 

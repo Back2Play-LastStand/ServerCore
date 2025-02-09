@@ -1,6 +1,4 @@
 #pragma once
-using namespace std;
-#include <vector>
 #include "context.h"
 #include "Packet.h"
 

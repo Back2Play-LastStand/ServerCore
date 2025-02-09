@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-using namespace std;
 
 // [size(2)][id(2)][data...]
 struct PacketHeader

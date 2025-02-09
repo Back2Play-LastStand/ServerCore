@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Network/Packet.h"
 
 Packet::~Packet()

@@ -1,8 +1,4 @@
-#include <iostream>
-using namespace std;
-
-#include "socket.h"
-using namespace cppx;
+#include "pch.h"
 
 int main()
 {

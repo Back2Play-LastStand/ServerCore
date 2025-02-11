@@ -18,8 +18,8 @@ public:
 	void SendContext(vector<char> buffer);
 	void Disconnect();
 
-protected:
-	virtual void OnConnected() { }
+public:
+	virtual void OnConnected(endpoint ep) { }
 	virtual int OnRecv(byte* buffer, int len) { return len; }
 	virtual void OnSend(int len) { }
 	virtual void OnDisconnected() { }

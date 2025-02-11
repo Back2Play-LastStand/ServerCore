@@ -38,4 +38,21 @@ void Server::Run(endpoint ep, int count)
 
 int Server::AcceptCompleted(context* acceptContext)
 {
+	SOCKADDR_IN addr;
+	int len = sizeof(SOCKADDR_IN);
+	if (SOCKET_ERROR != getpeername(acceptContext->_socket->get_handle(), reinterpret_cast<SOCKADDR*>(&addr), &len))
+	{
+		auto error = WSAGetLastError();
+		return WSA_IO_PENDING == error;
+	}
+
+	auto endpoint = endpoint::place(addr);
+	auto client = shared_ptr<Session>();
+	client->Run(acceptContext->_socket);
+	cppx::socket clientSock = client->GetSocket();
+	clientSock.set_endpoint(endpoint);
+
+	acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
+	client->OnConnected(endpoint);
+	m_listenSocket.accept(acceptContext);
 }

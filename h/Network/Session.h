@@ -2,11 +2,15 @@
 #include "context.h"
 #include "Packet.h"
 
-class Session
+class Session : public enable_shared_from_this<Session>
 {
 public:
 	Session();
 	virtual ~Session();
+
+public:
+	void Run(shared_ptr<cppx::socket> sock);
+	cppx::socket GetSocket();
 
 public:
 	void Send(Packet* packet, bool sendContext = true);
@@ -14,8 +18,8 @@ public:
 	void SendContext(vector<char> buffer);
 	void Disconnect();
 
-protected:
-	virtual void OnConnected() { }
+public:
+	virtual void OnConnected(endpoint ep) { }
 	virtual int OnRecv(byte* buffer, int len) { return len; }
 	virtual void OnSend(int len) { }
 	virtual void OnDisconnected() { }

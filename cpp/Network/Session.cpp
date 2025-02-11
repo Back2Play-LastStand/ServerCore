@@ -9,6 +9,18 @@ Session::~Session()
 {
 }
 
+void Session::Run(shared_ptr<cppx::socket> sock)
+{
+	m_sock = sock;
+	m_recvContext._buffer = m_buffer;
+	m_sock->recv(&m_recvContext);
+}
+
+cppx::socket Session::GetSocket()
+{
+	return *m_sock;
+}
+
 void Session::Send(Packet* packet, bool sendContext = true)
 {
 	if (sendContext)

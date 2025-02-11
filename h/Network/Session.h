@@ -2,11 +2,15 @@
 #include "context.h"
 #include "Packet.h"
 
-class Session
+class Session : public enable_shared_from_this<Session>
 {
 public:
 	Session();
 	virtual ~Session();
+
+public:
+	void Run(shared_ptr<cppx::socket> sock);
+	cppx::socket GetSocket();
 
 public:
 	void Send(Packet* packet, bool sendContext = true);

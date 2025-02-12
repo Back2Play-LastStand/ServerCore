@@ -15,3 +15,13 @@ void StompAllocator::Release(void* ptr)
 	const long long baseAddress = address - (address % PAGE_SIZE);
 	::VirtualFree(reinterpret_cast<void*>(baseAddress), 0, MEM_RELEASE);
 }
+
+void* PoolAllocator::Alloc(int size)
+{
+	return GMemory->Allocate(size);
+}
+
+void PoolAllocator::Release(void* ptr)
+{
+	GMemory->Release(ptr);
+}

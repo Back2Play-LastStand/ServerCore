@@ -13,6 +13,6 @@ public:
 
 private:
 	cppx::socket m_listenSocket;
-	vector<context> m_acceptContext;
+	vector<context*> m_acceptContext;
 };
 

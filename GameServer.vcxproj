@@ -152,8 +152,12 @@
     <ClCompile Include="cppx\cpp\socket.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="cpp\Memory\Allocator.cpp" />
+    <ClCompile Include="cpp\Memory\MemoryPool.cpp" />
+    <ClCompile Include="cpp\Memory\ObjectPool.cpp" />
     <ClCompile Include="cpp\CorePch.cpp" />
     <ClCompile Include="cpp\main.cpp" />
+    <ClCompile Include="cpp\Memory\Memory.cpp" />
     <ClCompile Include="cpp\Network\Packet.cpp" />
     <ClCompile Include="cpp\Network\Server.cpp" />
     <ClCompile Include="cpp\Network\Session.cpp" />
@@ -169,6 +173,10 @@
     <ClInclude Include="cppx\h\native.h" />
     <ClInclude Include="cppx\h\socket.h" />
     <ClInclude Include="h\CorePch.h" />
+    <ClInclude Include="h\Memory\Allocator.h" />
+    <ClInclude Include="h\Memory\Memory.h" />
+    <ClInclude Include="h\Memory\MemoryPool.h" />
+    <ClInclude Include="h\Memory\ObjectPool.h" />
     <ClInclude Include="h\Network\Packet.h" />
     <ClInclude Include="h\Network\Server.h" />
     <ClInclude Include="h\Network\Session.h" />

@@ -11,3 +11,5 @@ using namespace cppx;
 
 #include "Memory/Memory.h"
 #include "Memory/ObjectPool.h"
+
+#define _STOMP

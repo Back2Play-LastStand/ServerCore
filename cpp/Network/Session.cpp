@@ -21,7 +21,7 @@ cppx::socket Session::GetSocket()
 	return *m_sock;
 }
 
-void Session::Send(Packet* packet, bool sendContext = true)
+void Session::Send(Packet* packet, bool sendContext)
 {
 	if (sendContext)
 		SendContext(packet->GetData());

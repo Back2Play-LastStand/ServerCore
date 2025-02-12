@@ -2,6 +2,7 @@
 #include "Allocator.h"
 
 class MemoryPool;
+extern class Memory* GMemory;
 
 class Memory
 {

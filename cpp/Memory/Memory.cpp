@@ -2,6 +2,8 @@
 #include "Memory.h"
 #include "Memory/MemoryPool.h"
 
+Memory* GMemory = new Memory();
+
 Memory::Memory()
 {
 	int size = 0;

@@ -40,7 +40,7 @@ private:
 };
 
 template<typename T>
-int ObjectPool<T>::s_allocSize = sizeof(Type) + sizeof(MemoryHeader);
+int ObjectPool<T>::s_allocSize = sizeof(T) + sizeof(MemoryHeader);
 
 template<typename T>
 MemoryPool ObjectPool<T>::s_pool{ s_allocSize };

@@ -5,6 +5,7 @@
 Server::Server()
 {
 	m_listenSocket.create(protocol::tcp);
+	m_acceptContext.reserve(20);
 }
 
 Server::~Server()

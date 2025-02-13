@@ -5,6 +5,7 @@
 #include <vector>
 #include <queue>
 #include <atomic>
+#include <mutex>
 using namespace std;
 
 #include "socket.h"

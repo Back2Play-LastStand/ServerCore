@@ -5,6 +5,7 @@
 Server::Server()
 {
 	m_listenSocket.create(protocol::tcp);
+	m_acceptContext.reserve(20);
 }
 
 Server::~Server()
@@ -30,7 +31,7 @@ void Server::Run(endpoint ep, int count)
 		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
 		
 		if (!m_listenSocket.accept(acceptContext))
-			AcceptCompleted(acceptContext);
+			m_listenSocket.accept(acceptContext);
 
 		m_acceptContext.emplace_back(acceptContext);
 	}

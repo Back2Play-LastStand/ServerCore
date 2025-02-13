@@ -21,8 +21,11 @@ public:
 	virtual ~Packet();
 
 	vector<char> GetData();
+	void Set(PacketInfo& packet);
+	void Set(unsigned int clientIndex, PacketHeader packetHeader, char* data);
 
 private:
 	vector<char> m_buffer;
+	PacketInfo m_packetInfo;
 };
 

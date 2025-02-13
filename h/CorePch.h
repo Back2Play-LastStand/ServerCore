@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
+#include <atomic>
 using namespace std;
 
 #include "socket.h"

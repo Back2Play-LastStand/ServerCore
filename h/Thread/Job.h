@@ -40,6 +40,8 @@ public:
 		m_jobs.push(job);
 	}
 
+	void FlushJob();
+
 private:
 	queue<shared_ptr<Job>> m_jobs;
 };

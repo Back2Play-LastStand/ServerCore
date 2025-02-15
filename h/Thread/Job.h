@@ -15,7 +15,7 @@ public:
 		m_callback = [owner, memFunc, args...]()
 			{
 				(owner.get()->*memFunc)(args...);
-			}
+			};
 	}
 
 	void Execute()

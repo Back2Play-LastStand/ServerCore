@@ -162,6 +162,7 @@
     <ClCompile Include="cpp\Network\Server.cpp" />
     <ClCompile Include="cpp\Network\Session.cpp" />
     <ClCompile Include="cpp\Thread\CoreTLS.cpp" />
+    <ClCompile Include="cpp\Thread\Job.cpp" />
     <ClCompile Include="cpp\Thread\ThreadManager.cpp" />
     <ClCompile Include="pch\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -183,6 +184,7 @@
     <ClInclude Include="h\Network\Server.h" />
     <ClInclude Include="h\Network\Session.h" />
     <ClInclude Include="h\Thread\CoreTLS.h" />
+    <ClInclude Include="h\Thread\Job.h" />
     <ClInclude Include="h\Thread\ThreadManager.h" />
     <ClInclude Include="pch\pch.h" />
   </ItemGroup>

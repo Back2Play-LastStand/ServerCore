@@ -18,6 +18,10 @@ public:
 		}
 	}
 
+	void Execute()
+	{
+		m_callback;
+	}
 
 private:
 	CallbackJob m_callback;

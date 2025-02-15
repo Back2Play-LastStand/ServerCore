@@ -13,9 +13,9 @@ public:
 	Job(shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
 	{
 		m_callback = [owner, memFunc, args...]()
-		{
-			(owner.get()->*memFunc)(args...);
-		}
+			{
+				(owner.get()->*memFunc)(args...);
+			}
 	}
 
 	void Execute()
@@ -29,6 +29,17 @@ private:
 
 class JobSerializer : public enable_shared_from_this<JobSerializer>
 {
+public:
+	void PushJob(CallbackJob&& callback);
+
+	template<typename T, typename Ret, typename... Args>
+	void PushJob(Ret(T::* memFunc)(Args...), Args... args)
+	{
+		auto owner = static_pointer_cast<T>(shared_from_this());
+		auto job = MakeShared<Job>(owner, memFunc, forward<Args>(args)...);
+		m_jobs.push(job);
+	}
+
 private:
 	queue<shared_ptr<Job>> m_jobs;
 };

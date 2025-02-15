@@ -29,5 +29,6 @@ private:
 
 class JobSerializer : public enable_shared_from_this<JobSerializer>
 {
-
+private:
+	queue<shared_ptr<Job>> m_jobs;
 };

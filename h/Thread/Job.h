@@ -30,7 +30,10 @@ private:
 class JobSerializer : public enable_shared_from_this<JobSerializer>
 {
 public:
-	void PushJob(CallbackJob&& callback);
+	void PushJob(CallbackJob&& callback)
+	{
+		m_jobs.push(MakeShared<Job>(move(callback)));
+	}
 
 	template<typename T, typename Ret, typename... Args>
 	void PushJob(Ret(T::* memFunc)(Args...), Args... args)

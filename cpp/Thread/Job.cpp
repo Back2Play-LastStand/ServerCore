@@ -1,11 +1,6 @@
 #include "pch.h"
 #include "Thread/Job.h"
 
-void JobSerializer::PushJob(CallbackJob&& callback)
-{
-	m_jobs.push(MakeShared<Job>(move(callback)));
-}
-
 void JobSerializer::FlushJob()
 {
 	while (!m_jobs.empty())

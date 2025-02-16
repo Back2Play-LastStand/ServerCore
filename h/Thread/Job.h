@@ -43,5 +43,5 @@ public:
 	void FlushJob();
 
 private:
-	queue<shared_ptr<Job>> m_jobs;
+	concurrent_queue<shared_ptr<Job>> m_jobs;
 };

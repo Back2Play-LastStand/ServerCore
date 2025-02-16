@@ -10,13 +10,8 @@ void JobSerializer::FlushJob()
 {
 	while (!m_jobs.empty())
 	{
-		shared_ptr<Job> ret = m_jobs.front();
-		m_jobs.pop();
-
-		auto job = ret;
-		if (job == nullptr)
-			break;
-
-		job->Execute();
+		shared_ptr<Job> job;
+		if (m_jobs.try_pop(job))
+			job->Execute();
 	}
 }

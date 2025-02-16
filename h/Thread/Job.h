@@ -30,18 +30,24 @@ private:
 class JobSerializer : public enable_shared_from_this<JobSerializer>
 {
 public:
-	void PushJob(CallbackJob&& callback);
+	void PushJob(CallbackJob&& callback)
+	{
+		Push(MakeShared<Job>(move(callback)));
+	}
 
 	template<typename T, typename Ret, typename... Args>
 	void PushJob(Ret(T::* memFunc)(Args...), Args... args)
 	{
 		auto owner = static_pointer_cast<T>(shared_from_this());
-		auto job = MakeShared<Job>(owner, memFunc, forward<Args>(args)...);
-		m_jobs.push(job);
+		Push(MakeShared<Job>(owner, memFunc, forward<Args>(args)...));
 	}
 
 	void FlushJob();
 
 private:
-	queue<shared_ptr<Job>> m_jobs;
+	void Push(shared_ptr<Job>&& job);
+
+private:
+	concurrent_queue<shared_ptr<Job>> m_jobs;
+	atomic<int> m_jobCount = 0;
 };

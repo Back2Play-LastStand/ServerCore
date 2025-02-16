@@ -13,8 +13,6 @@ ThreadManager::~ThreadManager()
 
 void ThreadManager::Launch(function<void(void)> callback)
 {
-	lock_guard<mutex> guard(m_lock);
-
 	m_threads.push_back(thread([=]()
 		{
 			InitTLS();

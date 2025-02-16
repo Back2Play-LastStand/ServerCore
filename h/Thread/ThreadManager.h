@@ -16,7 +16,6 @@ public:
 	static void DestoryTLS();
 
 private:
-	mutex m_lock;
-	vector<thread> m_threads;
+	concurrent_vector<thread> m_threads;
 };
 

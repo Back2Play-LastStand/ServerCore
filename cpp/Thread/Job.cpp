@@ -1,23 +1,23 @@
 #include "pch.h"
 #include "Thread/Job.h"
 
-void JobSerializer::PushJob(CallbackJob&& callback)
-{
-	auto job = MakeShared<Job>(move(callback));
-	m_jobs.push(job);
-}
-
 void JobSerializer::FlushJob()
 {
 	while (!m_jobs.empty())
 	{
-		shared_ptr<Job> ret = m_jobs.front();
-		m_jobs.pop();
+		shared_ptr<Job> job;
+		if (m_jobs.try_pop(job))
+			job->Execute();
+	}
+}
 
-		auto job = ret;
-		if (job == nullptr)
-			break;
+void JobSerializer::Push(shared_ptr<Job>&& job)
+{
+	const int prevCount = m_jobCount.fetch_add(1);
+	m_jobs.push(job);
 
-		job->Execute();
+	if (prevCount == 0)
+	{
+		FlushJob();
 	}
 }

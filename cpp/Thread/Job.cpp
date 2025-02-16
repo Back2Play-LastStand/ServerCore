@@ -3,8 +3,7 @@
 
 void JobSerializer::PushJob(CallbackJob&& callback)
 {
-	auto job = MakeShared<Job>(move(callback));
-	m_jobs.push(job);
+	m_jobs.push(MakeShared<Job>(move(callback)));
 }
 
 void JobSerializer::FlushJob()

@@ -20,7 +20,7 @@ public:
 
 	void Execute()
 	{
-		m_callback;
+		m_callback();
 	}
 
 private:

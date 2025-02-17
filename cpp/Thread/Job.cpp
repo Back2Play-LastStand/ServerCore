@@ -22,12 +22,12 @@ void JobSerializer::Push(shared_ptr<Job> job)
 	}
 }
 
-void JobTimer::Reserve(long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job)
+void JobTimer::Reserve(unsigned long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job)
 {
 	m_datas.push({ GetTickCount64() + executeTick, owner, job });
 }
 
-void JobTimer::Distribute(long long now)
+void JobTimer::Distribute(unsigned long long now)
 {
 	while (!m_datas.empty())
 	{

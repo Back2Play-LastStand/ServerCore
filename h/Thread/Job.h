@@ -53,7 +53,7 @@ private:
 struct JobData
 {
 	JobData() = default;
-	JobData(long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job) : executeTick(executeTick), owner(owner), job(job)
+	JobData(unsigned long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job) : executeTick(executeTick), owner(owner), job(job)
 	{
 	}
 
@@ -62,7 +62,7 @@ struct JobData
 		return executeTick < other.executeTick;
 	}
 
-	long long executeTick = 0;
+	unsigned long long executeTick = 0;
 	weak_ptr<JobSerializer> owner;
 	shared_ptr<Job> job;
 };
@@ -70,8 +70,8 @@ struct JobData
 class JobTimer
 {
 public:
-	void Reserve(long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job);
-	void Distribute(long long now);
+	void Reserve(unsigned long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job);
+	void Distribute(unsigned long long now);
 	void Clear();
 
 private:

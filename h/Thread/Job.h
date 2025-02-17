@@ -1,5 +1,4 @@
 #pragma once
-#include "System/Engine.h"
 
 using CallbackJob = function<void()>;
 

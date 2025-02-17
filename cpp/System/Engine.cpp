@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "System/Engine.h"
 
+#include "Thread/ThreadManager.h"
+#include "Thread/Job.h"
+
 Engine::Engine()
 {
 	Init();

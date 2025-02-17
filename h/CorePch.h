@@ -6,6 +6,8 @@
 #include <queue>
 #include <atomic>
 #include <mutex>
+#include <thread>
+#include <functional>
 using namespace std;
 
 #include <concurrent_vector.h>
@@ -20,8 +22,6 @@ using namespace Concurrency;
 using namespace cppx;
 
 #include "Thread/CoreTLS.h"
-#include "Thread/ThreadManager.h"
-#include "Thread/Job.h"
 #include "Memory/Memory.h"
 #include "Memory/ObjectPool.h"
 #include "System/Engine.h"

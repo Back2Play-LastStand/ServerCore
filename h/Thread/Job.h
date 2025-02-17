@@ -91,5 +91,3 @@ public:
 private:
 	concurrent_priority_queue<JobData> m_datas;
 };
-
-extern class JobTimer* GJobTimer;

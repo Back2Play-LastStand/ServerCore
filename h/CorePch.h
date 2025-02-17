@@ -21,6 +21,7 @@ using namespace cppx;
 
 #include "Thread/CoreTLS.h"
 #include "Thread/ThreadManager.h"
+#include "Thread/Job.h"
 #include "Memory/Memory.h"
 #include "Memory/ObjectPool.h"
 

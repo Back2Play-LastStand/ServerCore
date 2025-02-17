@@ -1,4 +1,5 @@
 #pragma once
+#include "System/Engine.h"
 
 using CallbackJob = function<void()>;
 
@@ -45,7 +46,8 @@ public:
 	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback)
 	{
 		auto job = make_shared<Job>(move(callback));
-		GJobTimer->Reserve(tickAfter, shared_from_this(), job);
+		if (auto* jobTimer = GEngine->GetJobTimer())
+			jobTimer->Reserve(tickAfter, shared_from_this(), job);
 	}
 
 	template<typename T, typename Ret, typename... Args>
@@ -53,7 +55,8 @@ public:
 	{
 		auto owner = static_pointer_cast<T>(shared_from_this());
 		auto job = make_shared<Job>(owner, memFunc, forward<Args>(args)...);
-		GJobTimer->Reserve(tickAfter, shared_from_this(), job);
+		if (auto* jobTimer = GEngine->GetJobTimer())
+			jobTimer->Reserve(tickAfter, shared_from_this(), job);
 	}
 
 	void FlushJob();

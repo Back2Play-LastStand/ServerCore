@@ -16,4 +16,4 @@ private:
 	JobTimer* m_jobTimer = nullptr;
 };
 
-extern class Engine* GEngine;
+extern Engine* GEngine;

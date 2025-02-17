@@ -66,4 +66,7 @@ struct JobData
 	weak_ptr<JobSerializer> owner;
 	shared_ptr<Job> job;
 };
+
+class JobTimer
+{
 };

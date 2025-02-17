@@ -32,19 +32,19 @@ class JobSerializer : public enable_shared_from_this<JobSerializer>
 public:
 	void PushJob(CallbackJob&& callback)
 	{
-		Push(MakeShared<Job>(move(callback)));
+		Push(make_shared<Job>(move(callback)));
 	}
 
 	template<typename T, typename Ret, typename... Args>
 	void PushJob(Ret(T::* memFunc)(Args...), Args... args)
 	{
 		auto owner = static_pointer_cast<T>(shared_from_this());
-		Push(MakeShared<Job>(owner, memFunc, forward<Args>(args)...));
+		Push(make_shared<Job>(owner, memFunc, forward<Args>(args)...));
 	}
 
 	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback)
 	{
-		auto job = MakeShared<Job>(move(callback));
+		auto job = make_shared<Job>(move(callback));
 		GJobTimer->Reserve(tickAfter, shared_from_this(), job);
 	}
 
@@ -52,7 +52,7 @@ public:
 	void TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args)
 	{
 		auto owner = static_pointer_cast<T>(shared_from_this());
-		auto job = MakeShared<Job>(owner, memFunc, forward<Args>(args)...);
+		auto job = make_shared<Job>(owner, memFunc, forward<Args>(args)...);
 		GJobTimer->Reserve(tickAfter, shared_from_this(), job);
 	}
 

@@ -161,6 +161,7 @@
     <ClCompile Include="cpp\Network\Packet.cpp" />
     <ClCompile Include="cpp\Network\Server.cpp" />
     <ClCompile Include="cpp\Network\Session.cpp" />
+    <ClCompile Include="cpp\System\Engine.cpp" />
     <ClCompile Include="cpp\Thread\CoreTLS.cpp" />
     <ClCompile Include="cpp\Thread\Job.cpp" />
     <ClCompile Include="cpp\Thread\ThreadManager.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="h\Network\Packet.h" />
     <ClInclude Include="h\Network\Server.h" />
     <ClInclude Include="h\Network\Session.h" />
+    <ClInclude Include="h\System\Engine.h" />
     <ClInclude Include="h\Thread\CoreTLS.h" />
     <ClInclude Include="h\Thread\Job.h" />
     <ClInclude Include="h\Thread\ThreadManager.h" />

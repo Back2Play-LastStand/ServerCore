@@ -52,3 +52,5 @@ void JobTimer::Clear()
 		m_datas.clear();
 	}
 }
+
+JobTimer* GJobTimer = new JobTimer();

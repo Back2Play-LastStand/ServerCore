@@ -7,3 +7,4 @@ public:
 	~Engine();
 };
 
+extern class Engine* GEngine;

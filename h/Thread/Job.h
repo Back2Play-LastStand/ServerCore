@@ -43,7 +43,7 @@ public:
 	}
 
 	void FlushJob();
-	void Push(shared_ptr<Job>&& job);
+	void Push(shared_ptr<Job> job);
 
 private:
 	concurrent_queue<shared_ptr<Job>> m_jobs;

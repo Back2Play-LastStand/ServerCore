@@ -11,7 +11,7 @@ void JobSerializer::FlushJob()
 	}
 }
 
-void JobSerializer::Push(shared_ptr<Job>&& job)
+void JobSerializer::Push(shared_ptr<Job> job)
 {
 	const int prevCount = m_jobCount.fetch_add(1);
 	m_jobs.push(job);

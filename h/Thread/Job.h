@@ -43,8 +43,6 @@ public:
 	}
 
 	void FlushJob();
-
-private:
 	void Push(shared_ptr<Job>&& job);
 
 private:

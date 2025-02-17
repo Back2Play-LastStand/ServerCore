@@ -6,6 +6,8 @@ public:
 	Engine();
 	~Engine();
 
+	void Init();
+
 	inline ThreadManager* GetThreadManager() { return m_threadManager; }
 	inline JobTimer* GetJobTimer() { return m_jobTimer; }
 

@@ -18,3 +18,13 @@ void Engine::Init()
 	m_jobTimer = new JobTimer;
 }
 
+ThreadManager* Engine::GetThreadManager()
+{
+	return m_threadManager;
+}
+
+JobTimer* Engine::GetJobTimer()
+{
+	return m_jobTimer;
+}
+

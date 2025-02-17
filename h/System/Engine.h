@@ -1,5 +1,8 @@
 #pragma once
 
+class ThreadManager;
+class JobTimer;
+
 class Engine
 {
 public:
@@ -8,8 +11,8 @@ public:
 
 	void Init();
 
-	inline ThreadManager* GetThreadManager() { return m_threadManager; }
-	inline JobTimer* GetJobTimer() { return m_jobTimer; }
+	ThreadManager* GetThreadManager();
+	JobTimer* GetJobTimer();
 
 private:
 	ThreadManager* m_threadManager = nullptr;

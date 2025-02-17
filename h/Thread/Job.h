@@ -69,4 +69,11 @@ struct JobData
 
 class JobTimer
 {
+public:
+	void Reserve(long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job);
+	void Distribute(long long now);
+	void Clear();
+
+private:
+	concurrent_priority_queue<JobData> m_datas;
 };

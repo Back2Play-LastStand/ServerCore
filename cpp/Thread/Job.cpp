@@ -21,3 +21,34 @@ void JobSerializer::Push(shared_ptr<Job> job)
 		FlushJob();
 	}
 }
+
+void JobTimer::Reserve(long long executeTick, weak_ptr<JobSerializer> owner, shared_ptr<Job> job)
+{
+	m_datas.push({ GetTickCount64() + executeTick, owner, job });
+}
+
+void JobTimer::Distribute(long long now)
+{
+	while (!m_datas.empty())
+	{
+		JobData jobData;
+		if (m_datas.try_pop(jobData))
+		{
+			if (now < jobData.executeTick)
+			{
+				m_datas.push(jobData);
+				break;
+			}
+			else if (auto owner = jobData.owner.lock())
+				owner->Push(jobData.job);
+		}
+	}
+}
+
+void JobTimer::Clear()
+{
+	while (!m_datas.empty())
+	{
+		m_datas.clear();
+	}
+}

@@ -22,6 +22,7 @@ using namespace Concurrency;
 using namespace cppx;
 
 #include "Thread/CoreTLS.h"
+#include "Thread/Job.h"
 #include "Memory/Memory.h"
 #include "Memory/ObjectPool.h"
 #include "System/Engine.h"

@@ -31,3 +31,4 @@ JobTimer* Engine::GetJobTimer()
 	return m_jobTimer;
 }
 
+Engine* GEngine = nullptr;

@@ -30,33 +30,13 @@ private:
 class JobSerializer : public enable_shared_from_this<JobSerializer>
 {
 public:
-	void PushJob(CallbackJob&& callback)
-	{
-		Push(make_shared<Job>(move(callback)));
-	}
-
+	void PushJob(CallbackJob&& callback);
 	template<typename T, typename Ret, typename... Args>
-	void PushJob(Ret(T::* memFunc)(Args...), Args... args)
-	{
-		auto owner = static_pointer_cast<T>(shared_from_this());
-		Push(make_shared<Job>(owner, memFunc, forward<Args>(args)...));
-	}
+	void PushJob(Ret(T::* memFunc)(Args...), Args... args);
 
-	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback)
-	{
-		auto job = make_shared<Job>(move(callback));
-		if (auto* jobTimer = GEngine->GetJobTimer())
-			jobTimer->Reserve(tickAfter, shared_from_this(), job);
-	}
-
+	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback);
 	template<typename T, typename Ret, typename... Args>
-	void TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args)
-	{
-		auto owner = static_pointer_cast<T>(shared_from_this());
-		auto job = make_shared<Job>(owner, memFunc, forward<Args>(args)...);
-		if (auto* jobTimer = GEngine->GetJobTimer())
-			jobTimer->Reserve(tickAfter, shared_from_this(), job);
-	}
+	void TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args);
 
 	void FlushJob();
 	void Push(shared_ptr<Job> job);

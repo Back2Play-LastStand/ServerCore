@@ -2,5 +2,7 @@
 
 class DBConnection
 {
+public:
+	DBConnection() = default;
 };
 

@@ -38,3 +38,18 @@ void DBConnectionPool::Clear()
 
 	m_connections.clear();
 }
+
+void DBConnectionPool::Push(DBConnection* connection)
+{
+	m_connections.push(connection);
+}
+
+DBConnection* DBConnectionPool::Pop()
+{
+	if (m_connections.empty())
+		return nullptr;
+
+	DBConnection* connection = nullptr;
+	m_connections.try_pop(connection);
+	return connection;
+}

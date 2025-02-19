@@ -27,3 +27,10 @@ bool DBConnectionPool::Connection(int connectionCount)
 	return true;
 }
 
+void DBConnectionPool::Clear()
+{
+	for (auto* connection : m_connections)
+		xdelete(connection);
+
+	m_connections.clear();
+}

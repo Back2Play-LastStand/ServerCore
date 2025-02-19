@@ -9,6 +9,8 @@ public:
 	~DBConnectionPool();
 
 	bool Connection(int connectionCount);
+	void Clear();
+
 private:
 	concurrent_vector<DBConnection*> m_connections;
 };

@@ -8,6 +8,7 @@ DBConnectionPool::DBConnectionPool()
 
 DBConnectionPool::~DBConnectionPool()
 {
+	Clear();
 }
 
 bool DBConnectionPool::Connection(int connectionCount)

@@ -17,6 +17,8 @@ public:
 private:
 	ThreadManager* m_threadManager = nullptr;
 	JobTimer* m_jobTimer = nullptr;
+
+	concurrent_queue<JobSerializer> m_jobSerializerQueue;
 };
 
 extern Engine* GEngine;

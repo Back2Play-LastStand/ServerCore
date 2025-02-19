@@ -21,7 +21,7 @@ bool DBConnectionPool::Connection(int connectionCount)
 		if (connection->Connect() == false)
 			return false;
 
-		m_connections.push_back(connection);
+		m_connections.push(connection);
 	}
 
 	return true;
@@ -29,8 +29,12 @@ bool DBConnectionPool::Connection(int connectionCount)
 
 void DBConnectionPool::Clear()
 {
-	for (auto* connection : m_connections)
-		xdelete(connection);
+	while (!m_connections.empty())
+	{
+		DBConnection* connection = nullptr;
+		if (m_connections.try_pop(connection))
+			xdelete(connection);
+	}
 
 	m_connections.clear();
 }

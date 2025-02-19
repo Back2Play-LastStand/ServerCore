@@ -12,6 +12,6 @@ public:
 	void Clear();
 
 private:
-	concurrent_vector<DBConnection*> m_connections;
+	concurrent_queue<DBConnection*> m_connections;
 };
 

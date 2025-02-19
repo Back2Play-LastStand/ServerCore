@@ -152,6 +152,8 @@
     <ClCompile Include="cppx\cpp\socket.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="cpp\Database\DBConnection.cpp" />
+    <ClCompile Include="cpp\Database\DBConnectionPool.cpp" />
     <ClCompile Include="cpp\Memory\Allocator.cpp" />
     <ClCompile Include="cpp\Memory\MemoryPool.cpp" />
     <ClCompile Include="cpp\Memory\ObjectPool.cpp" />
@@ -177,6 +179,8 @@
     <ClInclude Include="cppx\h\native.h" />
     <ClInclude Include="cppx\h\socket.h" />
     <ClInclude Include="h\CorePch.h" />
+    <ClInclude Include="h\Database\DBConnection.h" />
+    <ClInclude Include="h\Database\DBConnectionPool.h" />
     <ClInclude Include="h\Memory\Allocator.h" />
     <ClInclude Include="h\Memory\Memory.h" />
     <ClInclude Include="h\Memory\MemoryPool.h" />

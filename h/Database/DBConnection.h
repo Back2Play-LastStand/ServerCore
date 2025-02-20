@@ -8,5 +8,8 @@ public:
 	DBConnection() = default;
 
 	bool Connect();
+	void Clear();
+
+	bool Execute();
 };
 

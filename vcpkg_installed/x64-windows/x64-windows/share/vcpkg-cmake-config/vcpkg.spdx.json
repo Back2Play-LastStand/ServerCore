@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-cmake-config-x64-windows-2024-05-23-d301e92a-01a8-43c0-8baf-cac1ff75a34e",
-  "name": "vcpkg-cmake-config:x64-windows@2024-05-23 7cea309dec25d15d85febb39afd2ed3ae3a0a43a151474600244df1c8d4df954",
+  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-cmake-config-x64-windows-2024-05-23-928fef5b-48a9-4214-892e-20fa90569fd3",
+  "name": "vcpkg-cmake-config:x64-windows@2024-05-23 e13e476f2dc1787a5cc16a8423f284843ffebb80dedbfa8aca1d1153430af274",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-02-11-bec4296bf5289dc9ce83b4f5095943e44162f9c2"
     ],
-    "created": "2025-02-20T12:30:23Z"
+    "created": "2025-02-20T14:57:09Z"
   },
   "relationships": [
     {
@@ -78,7 +78,7 @@
       "name": "vcpkg-cmake-config",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "2024-05-23",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/vcpkg-cmake-config",
+      "downloadLocation": "NOASSERTION",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
@@ -87,7 +87,7 @@
     {
       "name": "vcpkg-cmake-config:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "7cea309dec25d15d85febb39afd2ed3ae3a0a43a151474600244df1c8d4df954",
+      "versionInfo": "e13e476f2dc1787a5cc16a8423f284843ffebb80dedbfa8aca1d1153430af274",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -97,7 +97,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/SAMSUNG/Downloads/vcpkg-master/vcpkg-master/ports/vcpkg-cmake-config/copyright",
+      "fileName": "./C:/vcpkg/vcpkg/ports/vcpkg-cmake-config/copyright",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -109,7 +109,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/SAMSUNG/Downloads/vcpkg-master/vcpkg-master/ports/vcpkg-cmake-config/portfile.cmake",
+      "fileName": "./C:/vcpkg/vcpkg/ports/vcpkg-cmake-config/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -121,7 +121,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/SAMSUNG/Downloads/vcpkg-master/vcpkg-master/ports/vcpkg-cmake-config/vcpkg-port-config.cmake",
+      "fileName": "./C:/vcpkg/vcpkg/ports/vcpkg-cmake-config/vcpkg-port-config.cmake",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -133,7 +133,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/SAMSUNG/Downloads/vcpkg-master/vcpkg-master/ports/vcpkg-cmake-config/vcpkg.json",
+      "fileName": "./C:/vcpkg/vcpkg/ports/vcpkg-cmake-config/vcpkg.json",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -145,7 +145,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/SAMSUNG/Downloads/vcpkg-master/vcpkg-master/ports/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake",
+      "fileName": "./C:/vcpkg/vcpkg/ports/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {

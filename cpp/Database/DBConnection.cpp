@@ -14,3 +14,12 @@ bool DBConnection::Connect()
 
 	return true;
 }
+
+void DBConnection::Clear()
+{
+}
+
+bool DBConnection::Execute()
+{
+	return false;
+}

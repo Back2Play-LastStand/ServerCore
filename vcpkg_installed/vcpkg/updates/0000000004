@@ -1,0 +1,8 @@
+Package: zstd
+Version: 1.5.6
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 2c0a72df203274da83f5b82bbcd848a21c6a4c546f8eca9246c82b1be1e03f14
+Description: Zstandard - Fast real-time compression algorithm
+Status: install ok half-installed

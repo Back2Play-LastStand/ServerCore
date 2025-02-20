@@ -10,6 +10,8 @@
 #include <functional>
 using namespace std;
 
+#include <mysqlx/xdevapi.h>
+
 #include <concurrent_vector.h>
 #include <concurrent_queue.h>
 #include <concurrent_priority_queue.h>

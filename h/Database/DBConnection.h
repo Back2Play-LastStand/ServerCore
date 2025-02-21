@@ -27,6 +27,20 @@ public:
 		}
 	}
 
+	template<typename... Args>
+	mysqlx::RowResult Select(mysqlx::Table table, Args... args)
+	{
+		try
+		{
+			auto result = table.select(args...).execute();
+			return result;
+		}
+		catch (const mysqlx::Error& err)
+		{
+			cout << "An error occured : " << err.what() << endl;
+		}
+	}
+
 private:
 	unique_ptr<mysqlx::Schema> m_schema;
 	unique_ptr<mysqlx::Session> m_session;

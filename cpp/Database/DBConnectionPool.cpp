@@ -11,7 +11,7 @@ DBConnectionPool::~DBConnectionPool()
 	Clear();
 }
 
-bool DBConnectionPool::Connection(int connectionCount)
+bool DBConnectionPool::Connection(int connectionCount, string schemaName)
 {
 	if (connectionCount == 0)
 		return false;
@@ -19,7 +19,7 @@ bool DBConnectionPool::Connection(int connectionCount)
 	for (int i = 0; i < connectionCount; i++)
 	{
 		DBConnection* connection = xnew<DBConnection>();
-		if (connection->Connect() == false)
+		if (connection->Connect(schemaName) == false)
 			return false;
 
 		m_connections.push(connection);

@@ -8,7 +8,7 @@ public:
 	DBConnectionPool();
 	~DBConnectionPool();
 
-	bool Connection(int connectionCount);
+	bool Connection(int connectionCount, string schemaName);
 	void Clear();
 
 	void Push(DBConnection* connection);

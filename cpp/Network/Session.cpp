@@ -42,5 +42,9 @@ void Session::SendContext(vector<char> buffer)
 
 void Session::Disconnect()
 {
+	if (m_connected.exchange(false) == false)
+		return;
+
+	OnDisconnected();
 }
  

@@ -29,5 +29,7 @@ private:
 	vector<char> m_buffer;
 	cppx::context m_recvContext;
 	cppx::context m_sendContext;
+
+	atomic<bool> m_connected;
 };
 

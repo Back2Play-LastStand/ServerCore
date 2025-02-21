@@ -17,8 +17,9 @@ bool DBConnection::Connect(string schemaName)
 	{
 		InitMysql(schemaName);
 	}
-	catch (const int error)
+	catch (const mysqlx::Error& err)
 	{
+		cout << "An error occured : " << err.what() << endl;
 		return false;
 	}
 

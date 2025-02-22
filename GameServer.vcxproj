@@ -165,7 +165,6 @@
     <ClCompile Include="cpp\Memory\MemoryPool.cpp" />
     <ClCompile Include="cpp\Memory\ObjectPool.cpp" />
     <ClCompile Include="cpp\CorePch.cpp" />
-    <ClCompile Include="cpp\main.cpp" />
     <ClCompile Include="cpp\Memory\Memory.cpp" />
     <ClCompile Include="cpp\Network\Packet.cpp" />
     <ClCompile Include="cpp\Network\Server.cpp" />

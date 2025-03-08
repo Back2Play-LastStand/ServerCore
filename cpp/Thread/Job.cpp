@@ -36,7 +36,10 @@ void JobSerializer::FlushJob()
 	{
 		shared_ptr<Job> job;
 		if (m_jobs.try_pop(job))
+		{
 			job->Execute();
+			m_jobCount.fetch_sub(1);
+		}
 	}
 }
 

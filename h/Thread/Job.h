@@ -1,4 +1,6 @@
 #pragma once
+#include "Memory/Memory.h"
+#include "System/Engine.h"
 
 using CallbackJob = function<void()>;
 
@@ -27,25 +29,6 @@ private:
 	CallbackJob m_callback;
 };
 
-class JobSerializer : public enable_shared_from_this<JobSerializer>
-{
-public:
-	void PushJob(CallbackJob&& callback);
-	template<typename T, typename Ret, typename... Args>
-	void PushJob(Ret(T::* memFunc)(Args...), Args... args);
-
-	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback);
-	template<typename T, typename Ret, typename... Args>
-	void TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args);
-
-	void FlushJob();
-	void Push(shared_ptr<Job> job);
-
-private:
-	concurrent_queue<shared_ptr<Job>> m_jobs;
-	atomic<int> m_jobCount = 0;
-};
-
 struct JobData
 {
 	JobData() = default;
@@ -72,4 +55,43 @@ public:
 
 private:
 	concurrent_priority_queue<JobData> m_datas;
+};
+
+class JobSerializer : public enable_shared_from_this<JobSerializer>
+{
+public:
+	void PushJob(CallbackJob&& callback)
+	{
+		Push(MakeShared<Job>(move(callback)));
+	}
+
+	template<typename T, typename Ret, typename... Args>
+	void PushJob(Ret(T::* memFunc)(Args...), Args... args)
+	{
+		auto owner = static_pointer_cast<T>(shared_from_this());
+		Push(MakeShared<Job>(owner, memFunc, forward<Args>(args)...));
+	}
+
+	void TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback)
+	{
+		auto job = MakeShared<Job>(move(callback));
+		if (auto* jobTimer = GEngine->GetJobTimer())
+			jobTimer->Reserve(tickAfter, shared_from_this(), job);
+	}
+
+	template<typename T, typename Ret, typename... Args>
+	void TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args)
+	{
+		auto owner = static_pointer_cast<T>(shared_from_this());
+		auto job = MakeShared<Job>(owner, memFunc, forward<Args>(args)...);
+		if (auto* jobTimer = GEngine->GetJobTimer())
+			jobTimer->Reserve(tickAfter, shared_from_this(), job);
+	}
+
+	void FlushJob();
+	void Push(shared_ptr<Job> job);
+
+private:
+	concurrent_queue<shared_ptr<Job>> m_jobs;
+	atomic<int> m_jobCount = 0;
 };

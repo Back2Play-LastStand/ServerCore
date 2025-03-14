@@ -1,34 +1,5 @@
 #include "pch.h"
 #include "Thread/Job.h"
-#include "System/Engine.h"
-
-void JobSerializer::PushJob(CallbackJob&& callback)
-{
-	Push(MakeShared<Job>(move(callback)));
-}
-
-template<typename T, typename Ret, typename... Args>
-void JobSerializer::PushJob(Ret(T::* memFunc)(Args...), Args... args)
-{
-	auto owner = static_pointer_cast<T>(shared_from_this());
-	Push(MakeShared<Job>(owner, memFunc, forward<Args>(args)...));
-}
-
-void JobSerializer::TimerPushJob(unsigned long long tickAfter, CallbackJob&& callback)
-{
-	auto job = MakeShared<Job>(move(callback));
-	if (auto* jobTimer = GEngine->GetJobTimer())
-		jobTimer->Reserve(tickAfter, shared_from_this(), job);
-}
-
-template<typename T, typename Ret, typename... Args>
-void JobSerializer::TimerPushJob(unsigned long long tickAfter, Ret(T::* memFunc)(Args...), Args... args)
-{
-	auto owner = static_pointer_cast<T>(shared_from_this());
-	auto job = MakeShared<Job>(owner, memFunc, forward<Args>(args)...);
-	if (auto* jobTimer = GEngine->GetJobTimer())
-		jobTimer->Reserve(tickAfter, shared_from_this(), job);
-}
 
 void JobSerializer::FlushJob()
 {

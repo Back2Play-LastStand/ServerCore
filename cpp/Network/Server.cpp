@@ -31,7 +31,7 @@ void Server::Run(endpoint ep, int count)
 		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
 		
 		if (!m_listenSocket.accept(acceptContext))
-			m_listenSocket.accept(acceptContext);
+			AcceptCompleted(acceptContext);
 
 		m_acceptContext.emplace_back(acceptContext);
 	}
@@ -49,11 +49,13 @@ int Server::AcceptCompleted(context* acceptContext)
 
 	auto endpoint = endpoint::place(addr);
 	auto client = shared_ptr<Session>();
-	client->Run(acceptContext->_socket);
+	client->Run(move(acceptContext->_socket));
 	cppx::socket clientSock = client->GetSocket();
 	clientSock.set_endpoint(endpoint);
 
 	acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
 	client->OnConnected(endpoint);
 	m_listenSocket.accept(acceptContext);
+
+	cout << "Complete" << endl;
 }

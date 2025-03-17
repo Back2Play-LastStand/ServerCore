@@ -172,6 +172,7 @@
     <ClCompile Include="cpp\Memory\ObjectPool.cpp" />
     <ClCompile Include="cpp\CorePch.cpp" />
     <ClCompile Include="cpp\Memory\Memory.cpp" />
+    <ClCompile Include="cpp\Network\Client.cpp" />
     <ClCompile Include="cpp\Network\Packet.cpp" />
     <ClCompile Include="cpp\Network\Server.cpp" />
     <ClCompile Include="cpp\Network\Session.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="h\Memory\Memory.h" />
     <ClInclude Include="h\Memory\MemoryPool.h" />
     <ClInclude Include="h\Memory\ObjectPool.h" />
+    <ClInclude Include="h\Network\Client.h" />
     <ClInclude Include="h\Network\Packet.h" />
     <ClInclude Include="h\Network\Server.h" />
     <ClInclude Include="h\Network\Session.h" />

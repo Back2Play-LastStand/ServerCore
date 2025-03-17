@@ -8,7 +8,7 @@ public:
 	virtual ~Server();
 
 public:
-	void Run(endpoint ep, int count);
+	void Run(endpoint ep, int count = 1);
 	int AcceptCompleted(context* acceptContext);
 
 private:

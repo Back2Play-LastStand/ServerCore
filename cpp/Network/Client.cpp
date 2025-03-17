@@ -9,3 +9,12 @@ Client::Client()
 Client::~Client()
 {
 }
+
+void Client::Run(endpoint ep)
+{
+	m_sock.set_endpoint(ep);
+
+	auto connectContext = new context;
+	connectContext->endpoint = make_shared<endpoint>(ep);
+	m_sock.connect(connectContext);
+}

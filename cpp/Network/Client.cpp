@@ -3,6 +3,7 @@
 
 Client::Client()
 {
+	m_sock.create(protocol::tcp);
 }
 
 Client::~Client()

@@ -26,7 +26,7 @@ void Client::Run(endpoint ep)
 
 void Client::AcceptCompleted(context* acceptContext)
 {
-	auto client = make_shared<Session>();
+	auto client = m_serverFactory();
 	client->Run(move(make_shared<cppx::socket>(m_sock)));
 	client->OnConnected(endpoint());
 }

@@ -49,7 +49,7 @@ int Server::AcceptCompleted(context* acceptContext)
 	}
 
 	auto endpoint = endpoint::place(addr);
-	auto client = make_shared<Session>();
+	auto client = m_clientFactory();
 	client->Run(move(acceptContext->_socket));
 	client->GetSocket().set_endpoint(endpoint);
 

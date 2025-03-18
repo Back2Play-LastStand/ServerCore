@@ -49,14 +49,15 @@ int Server::AcceptCompleted(context* acceptContext)
 	}
 
 	auto endpoint = endpoint::place(addr);
-	auto client = shared_ptr<Session>();
+	auto client = make_shared<Session>();
 	client->Run(move(acceptContext->_socket));
-	cppx::socket clientSock = client->GetSocket();
-	clientSock.set_endpoint(endpoint);
+	client->GetSocket().set_endpoint(endpoint);
+
+	client->OnConnected(endpoint);
 
 	acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
-	client->OnConnected(endpoint);
 	m_listenSocket.accept(acceptContext);
 
 	cout << "Complete" << endl;
+	return true;
 }

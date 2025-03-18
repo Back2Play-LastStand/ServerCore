@@ -16,6 +16,7 @@ void Client::Run(endpoint ep)
 	m_sock.set_endpoint(ep);
 
 	auto connectContext = new context;
+	connectContext->_socket = make_shared<cppx::socket>();
 	connectContext->endpoint = make_shared<endpoint>(ep);
 	auto callback = std::bind(&Client::AcceptCompleted, this, placeholders::_1);
 	m_sock.connect(connectContext);

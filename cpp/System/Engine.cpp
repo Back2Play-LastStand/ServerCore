@@ -76,6 +76,7 @@ void Engine::GlobalQueueWork()
 				jobSerializer->FlushJob();
 			}
 		}
+		this_thread::sleep_for(chrono::milliseconds(1));
 	}
 }
 

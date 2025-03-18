@@ -2,8 +2,8 @@
 
 class Server
 {
-public:
 	friend class Session;
+public:
 	Server();
 	virtual ~Server();
 

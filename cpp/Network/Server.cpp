@@ -29,7 +29,8 @@ void Server::Run(endpoint ep, int count)
 	{
 		auto acceptContext = new context;
 		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
-		
+		auto callback = bind(&AcceptCompleted, this, placeholders::_1);
+
 		if (!m_listenSocket.accept(acceptContext))
 			AcceptCompleted(acceptContext);
 

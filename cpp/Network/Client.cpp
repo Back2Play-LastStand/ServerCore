@@ -17,6 +17,7 @@ void Client::Run(endpoint ep)
 
 	auto connectContext = new context;
 	connectContext->endpoint = make_shared<endpoint>(ep);
+	auto callback = bind(&AcceptCompleted, this, placeholders::_1);
 	m_sock.connect(connectContext);
 }
 

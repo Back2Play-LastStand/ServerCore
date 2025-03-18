@@ -8,6 +8,7 @@ public:
 
 public:
 	void Run(endpoint ep);
+	void AcceptCompleted(context* acceptContext);
 
 private:
 	cppx::socket m_sock;

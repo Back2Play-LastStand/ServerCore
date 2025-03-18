@@ -2,6 +2,7 @@
 
 class Client
 {
+	using ServerFactory = function<shared_ptr<Session>()>;
 public:
 	Client();
 	virtual ~Client();
@@ -12,5 +13,6 @@ public:
 
 private:
 	cppx::socket m_sock;
+	ServerFactory m_serverFactory;
 };
 

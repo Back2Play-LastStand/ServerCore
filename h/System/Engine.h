@@ -14,7 +14,7 @@ public:
 	ThreadManager* GetThreadManager();
 	JobTimer* GetJobTimer();
 
-	void RunThread(int io, int worker);
+	void RunThread(int io, int worker = 1);
 	void GlobalQueueWork();
 
 private:

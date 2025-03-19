@@ -29,35 +29,37 @@ void Server::Run(endpoint ep, int count)
 	{
 		auto acceptContext = new context;
 		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
-		auto callback = std::bind(&Server::AcceptCompleted, this, placeholders::_1);
+		acceptContext->completed_callback = std::bind(&Server::AcceptCompleted, this, placeholders::_1, placeholders::_2);
 
 		if (!m_listenSocket.accept(acceptContext))
-			AcceptCompleted(acceptContext);
+			AcceptCompleted(acceptContext, false);
 
 		m_acceptContext.emplace_back(acceptContext);
 	}
 }
 
-int Server::AcceptCompleted(context* acceptContext)
+int Server::AcceptCompleted(context* acceptContext, bool success)
 {
-	SOCKADDR_IN addr;
-	int len = sizeof(SOCKADDR_IN);
-	if (SOCKET_ERROR != getpeername(acceptContext->_socket->get_handle(), reinterpret_cast<SOCKADDR*>(&addr), &len))
+	if (success)
 	{
-		auto error = WSAGetLastError();
-		return WSA_IO_PENDING == error;
+		SOCKADDR_IN addr;
+		int len = sizeof(SOCKADDR_IN);
+		if (SOCKET_ERROR != getpeername(acceptContext->_socket->get_handle(), reinterpret_cast<SOCKADDR*>(&addr), &len))
+		{
+			auto error = WSAGetLastError();
+			return WSA_IO_PENDING == error;
+		}
+
+		auto endpoint = endpoint::place(addr);
+		auto client = m_clientFactory();
+		client->Run(move(acceptContext->_socket));
+		client->GetSocket().set_endpoint(endpoint);
+
+		client->OnConnected(endpoint);
+
+		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
+
 	}
-
-	auto endpoint = endpoint::place(addr);
-	auto client = m_clientFactory();
-	client->Run(move(acceptContext->_socket));
-	client->GetSocket().set_endpoint(endpoint);
-
-	client->OnConnected(endpoint);
-
-	acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
 	m_listenSocket.accept(acceptContext);
-
-	cout << "Complete" << endl;
 	return true;
 }

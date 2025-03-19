@@ -11,13 +11,13 @@ public:
 
 public:
 	void Run(endpoint ep, int count = 1);
-	int AcceptCompleted(context* acceptContext);
+	int AcceptCompleted(context* acceptContext, bool success);
 
 	template<typename T>
 	static shared_ptr<Server> Make()
 	{
 		auto server = MakeShared<Server>();
-		server->m_serverFactory = [] {
+		server->m_clientFactory = [] {
 			return MakeShared<T>();
 			};
 		return server;

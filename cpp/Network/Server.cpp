@@ -38,17 +38,13 @@ void Server::Run(endpoint ep, int count)
 	}
 }
 
-int Server::AcceptCompleted(context* acceptContext, bool success)
+void Server::AcceptCompleted(context* acceptContext, bool success)
 {
 	if (success)
 	{
 		SOCKADDR_IN addr;
 		int len = sizeof(SOCKADDR_IN);
-		if (SOCKET_ERROR != getpeername(acceptContext->_socket->get_handle(), reinterpret_cast<SOCKADDR*>(&addr), &len))
-		{
-			auto error = WSAGetLastError();
-			return WSA_IO_PENDING == error;
-		}
+		assert(SOCKET_ERROR != getpeername(acceptContext->_socket->get_handle(), reinterpret_cast<SOCKADDR*>(&addr), &len));
 
 		auto endpoint = endpoint::place(addr);
 		auto client = m_clientFactory();
@@ -61,5 +57,4 @@ int Server::AcceptCompleted(context* acceptContext, bool success)
 
 	}
 	m_listenSocket.accept(acceptContext);
-	return true;
 }

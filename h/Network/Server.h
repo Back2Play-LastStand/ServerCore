@@ -11,7 +11,7 @@ public:
 
 public:
 	void Run(endpoint ep, int count = 1);
-	int AcceptCompleted(context* acceptContext, bool success);
+	void AcceptCompleted(context* acceptContext, bool success);
 
 	template<typename T>
 	static shared_ptr<Server> Make()

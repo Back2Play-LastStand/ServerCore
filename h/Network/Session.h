@@ -13,6 +13,8 @@ public:
 	cppx::socket GetSocket();
 
 public:
+	void OnRecvCompleted(context* context, bool success);
+	void OnSendCompleted(context* context, bool success);
 	void Send(Packet* packet, bool sendContext = true);
 	void SendChar(vector<char> buffer);
 	void SendContext(vector<char> buffer);

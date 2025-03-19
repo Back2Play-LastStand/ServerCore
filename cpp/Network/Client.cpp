@@ -16,14 +16,18 @@ void Client::Run(endpoint ep)
 	m_sock.set_endpoint(ep);
 
 	auto connectContext = new context;
+	connectContext->_socket = make_shared<cppx::socket>();
 	connectContext->endpoint = make_shared<endpoint>(ep);
-	auto callback = std::bind(&Client::AcceptCompleted, this, placeholders::_1);
-	m_sock.connect(connectContext);
+	connectContext->completed_callback = std::bind(&Client::AcceptCompleted, this, placeholders::_1, placeholders::_2);
+	auto result = m_sock.connect(connectContext);
 }
 
-void Client::AcceptCompleted(context* acceptContext)
+void Client::AcceptCompleted(context* acceptContext, bool success)
 {
-	auto client = shared_ptr<Session>();
-	client->Run(make_shared<cppx::socket>(m_sock));
-	client->OnConnected(endpoint());
+	auto client = m_serverFactory();
+	if (success)
+	{
+		client->Run(move(make_shared<cppx::socket>(m_sock)));
+		client->OnConnected(endpoint());
+	}
 }

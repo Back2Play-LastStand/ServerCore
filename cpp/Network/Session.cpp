@@ -27,17 +27,22 @@ cppx::socket Session::GetSocket()
 
 void Session::OnRecvCompleted(context* context, bool success)
 {
-	if (success)
+	if (!success || context->length == 0)
 	{
-		OnRecv(reinterpret_cast<byte*>(&context->_buffer), sizeof(context->_buffer));
-		m_sock->recv(context);
+		Disconnect();
+		return;
 	}
+	OnRecv(reinterpret_cast<byte*>(context->_buffer.data()), context->length);
+	m_sock->recv(context);
 }
 
 void Session::OnSendCompleted(context* context, bool success)
 {
-	if (success)
-		cout << "OnSendCompleted" << endl;
+	if (!success)
+	{
+		Disconnect();
+		return;
+	}
 }
 
 void Session::Send(Packet* packet, bool sendContext)
@@ -66,4 +71,3 @@ void Session::Disconnect()
 
 	OnDisconnected();
 }
- 

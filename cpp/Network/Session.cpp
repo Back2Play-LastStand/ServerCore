@@ -32,7 +32,7 @@ void Session::OnRecvCompleted(context* context, bool success)
 		Disconnect();
 		return;
 	}
-	OnRecv(reinterpret_cast<byte*>(&context->_buffer), sizeof(context->_buffer));
+	OnRecv(reinterpret_cast<byte*>(context->_buffer.data()), context->length);
 	m_sock->recv(context);
 }
 

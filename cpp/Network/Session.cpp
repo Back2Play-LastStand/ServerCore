@@ -27,7 +27,7 @@ cppx::socket Session::GetSocket()
 
 void Session::OnRecvCompleted(context* context, bool success)
 {
-	if (!success || sizeof(context->_buffer) == 0)
+	if (!success || context->length == 0)
 	{
 		Disconnect();
 		return;

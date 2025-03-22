@@ -16,7 +16,7 @@ public:
 	template<typename T>
 	static shared_ptr<Server> Make()
 	{
-		auto server = MakeShared<Server>();
+		auto server = shared_ptr<Server>(new Server);
 		server->m_clientFactory = [] {
 			return MakeShared<T>();
 			};
@@ -27,5 +27,7 @@ private:
 	cppx::socket m_listenSocket;
 	vector<context*> m_acceptContext;
 	ClientFactory m_clientFactory;
+
+	vector<shared_ptr<Session>> m_clients;
 };
 

@@ -26,8 +26,10 @@ public:
 	virtual void OnSend(int len) { }
 	virtual void OnDisconnected() { }
 
-private:
+public:
 	shared_ptr<cppx::socket> m_sock;
+
+private:
 	vector<char> m_buffer;
 	cppx::context m_recvContext;
 	cppx::context m_sendContext;

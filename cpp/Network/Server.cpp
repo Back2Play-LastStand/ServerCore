@@ -10,6 +10,7 @@ Server::Server()
 
 Server::~Server()
 {
+	m_clients.clear();
 }
 
 void Server::Run(endpoint ep, int count)
@@ -49,12 +50,13 @@ void Server::AcceptCompleted(context* acceptContext, bool success)
 		auto endpoint = endpoint::place(addr);
 		auto client = m_clientFactory();
 		client->Run(move(acceptContext->_socket));
-		client->GetSocket().set_endpoint(endpoint);
+		client->m_sock->set_endpoint(endpoint);
+
+		acceptContext->_socket = make_unique<cppx::socket>(protocol::tcp);
 
 		client->OnConnected(endpoint);
 
-		acceptContext->_socket = make_shared<cppx::socket>(protocol::tcp);
-
+		m_clients.push_back(client);
 	}
 	m_listenSocket.accept(acceptContext);
 }

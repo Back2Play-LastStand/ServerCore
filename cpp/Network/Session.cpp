@@ -3,6 +3,7 @@
 
 Session::Session()
 {
+	m_buffer.resize(4096);
 }
 
 Session::~Session()

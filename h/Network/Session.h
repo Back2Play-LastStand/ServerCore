@@ -22,7 +22,7 @@ public:
 
 public:
 	virtual void OnConnected(endpoint ep) { }
-	virtual void OnRecv(byte* buffer, int len) { }
+	virtual void OnRecv(BYTE* buffer, int len) { }
 	virtual void OnSend(int len) { }
 	virtual void OnDisconnected() { }
 

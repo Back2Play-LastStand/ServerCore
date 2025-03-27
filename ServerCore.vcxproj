@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ServerCore\cppx\cpp\;$(SolutionDir)ServerCore\cppx\h\;$(SolutionDir)ServerCore\h\;$(SolutionDIr)ServerCore\pch\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ServerCore\cppx\cpp\;$(SolutionDir)ServerCore\cppx\h\;$(SolutionDir)ServerCore\h\;$(SolutionDIr)ServerCore\pch\;%(AdditionalIncludeDirectories);C:\Users\User\Downloads\oneapi-tbb-2022.0.0-win\oneapi-tbb-2022.0.0\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -132,8 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;C:\Users\User\Downloads\oneapi-tbb-2022.0.0-win\oneapi-tbb-2022.0.0\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>

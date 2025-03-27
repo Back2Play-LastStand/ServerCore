@@ -1,5 +1,6 @@
 #pragma once
 
+#define WIN32_LEAN_AND_MEAN
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,12 +13,13 @@ using namespace std;
 
 #include <mysqlx/xdevapi.h>
 
+#include <tbb/tbb.h>
 #include <concurrent_vector.h>
 #include <concurrent_queue.h>
 #include <concurrent_priority_queue.h>
 #include <concurrent_unordered_map.h>
 #include <concurrent_unordered_set.h>
-using namespace Concurrency;
+using namespace tbb;
 
 #include "socket.h"
 #include "context.h"

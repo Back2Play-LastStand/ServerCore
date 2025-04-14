@@ -54,6 +54,7 @@ void Server::AcceptCompleted(context* acceptContext, bool success)
 
 		acceptContext->_socket = make_unique<cppx::socket>(protocol::tcp);
 
+		client->SetIsConnected(true);
 		client->OnConnected(endpoint);
 
 		m_clients.push_back(client);

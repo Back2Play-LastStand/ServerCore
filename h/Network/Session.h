@@ -20,6 +20,8 @@ public:
 	void SendContext(vector<char> buffer);
 	void Disconnect();
 
+	void SetIsConnected(bool connected = false) { m_connected = connected; }
+
 public:
 	virtual void OnConnected(endpoint ep) { }
 	virtual void OnRecv(BYTE* buffer, int len) { }

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Network/Session.h"
 
-Session::Session()
+Session::Session() : m_connected(false)
 {
 	m_buffer.resize(4096);
 }

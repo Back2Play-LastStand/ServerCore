@@ -38,7 +38,7 @@ struct JobData
 
 	bool operator<(const JobData& other) const
 	{
-		return executeTick < other.executeTick;
+		return executeTick > other.executeTick;
 	}
 
 	unsigned long long executeTick = 0;

@@ -1,5 +1,6 @@
 {
-    "dependencies": [
-        "mysql-connector-cpp"
-    ]
+  "dependencies": [
+    "mysql-connector-cpp",
+    "tbb"
+  ]
 }
